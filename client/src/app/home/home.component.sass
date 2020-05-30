@@ -1,0 +1,42 @@
+@font-face
+    font-family: "Demode"
+    src: url("../../assets/fonts/Demode.ttf") format("truetype")
+    
+@font-face
+    font-family: "TypoLayerInferior"
+    src: url("../../assets/fonts/TypoLayer-InferiorLayer.ttf") format("truetype")
+
+@font-face
+    font-family: "TypoLayerMain"
+    src: url("../../assets/fonts/TypoLayer-MainLayer.ttf") format("truetype")
+
+@font-face
+    font-family: "Moonrise"
+    src: url("../../assets/fonts/Moonrise-Regular.otf") format("opentype")
+
+
+#container
+    width: 80%
+    height: 30%
+    display: flex
+    flex-direction: column
+    transition: width 0.2s linear
+    &.active
+        width: 45%
+
+    #title
+        flex: 0.5
+        display: flex
+        justify-content: center
+        align-items: center
+        color: #e0f4fc
+        font-size: 5em
+        font-family: Moonrise, Demode, cursive
+        
+
+    app-search
+        flex: 0.5
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center

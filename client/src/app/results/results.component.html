@@ -1,0 +1,18 @@
+<div id="results-loading" [class.active]='loading'>
+    <img src="/assets/images/loading.gif" alt="">
+</div>
+
+<div id="results-container" [class.active]='!loading'>
+    <div *ngFor='let game of games$ | async' 
+    class="game-container"
+    (click)='gameClickHandler(game)'
+    >
+        <div class="game-image">
+            <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{game.appid}}/header.jpg" alt="{{game.name}} image" onError="this.onerror=null;this.src='assets/images/chain.png';this.className='broken'">
+        </div>
+        <div class="game-name" title="{{game.name}}">
+            {{ game.name.length <= 50 ? game.name : game.name.slice(0,50) + "..." }} <span class='game-appid'>#{{ game.appid }}</span>
+        </div>
+
+    </div>
+</div>

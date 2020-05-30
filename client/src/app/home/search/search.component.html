@@ -1,0 +1,11 @@
+<div id="search-container">
+    <div id="search-input">
+        <input type="text" name="search" id="search" placeholder="Enter a game name " autocomplete="off" 
+        [value]='search'
+        [(ngModel)]='search' 
+        (keyup)='keyPressedHandler()'/>
+    </div>
+    <div id="search-icon">
+        <img src="assets/images/search.png" alt="search icon">
+    </div>
+</div>
