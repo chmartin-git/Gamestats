@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { shareReplay, map, switchMap, filter } from 'rxjs/operators'
 import { timer } from 'rxjs'
 import { Game, GameResponse } from '../../types/Game'
-cd 
+
+const API_ENDPOINT = 'http://localhost:8080/api/games';
 const CACHE_SIZE = 1;
 const INTERVAL = 120 //seconds
 
