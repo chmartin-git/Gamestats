@@ -36,12 +36,13 @@
 #results-loading.active
     height: 100%
 
-$gap-size: 10px
+$gap-size: 20px
+$cols: 3
 #results-container
     display: grid
     align-items: center
-    grid-template-columns: repeat(3, calc( 100%/3 - 10px))
-    grid-auto-rows: 27%
+    grid-template-columns: repeat(#{$cols}, calc( 100% / #{$cols} - #{$gap-size + $gap-size/$cols}))
+    grid-auto-rows: 22%
     width: 100%
     height: 0%
     row-gap: $gap-size
@@ -57,40 +58,48 @@ $gap-size: 10px
         align-items: center
         width: 100%
         height: 100%
+        grid-area: span 1 / span 1
+        background-color: #3a3a3a
 
-        .game-inner-container
-            display: flex
-            background-color: #3a3a3a
-            justify-content: center
-            align-items: center
-            width: 95%
-            height: 95%
+
+        .game-inner-container    
+            width: 100%
+            height: 100%
             flex-direction: column
             user-select: none
             transition: all 0.2s linear
             cursor: pointer
-
+            position: relative
             &:hover
                 width: 100%
                 height: 100%
+                .game-image
+                    img
+                        transform: scale(1.05)
 
             .game-name
+                position: absolute
                 display: flex
                 width: 100%
-                height: 15%
+                height: 20%
                 justify-content: center
                 align-items: center
-                color: #c7c7c7
+                color: #c7c7c725
                 font-size: 1.4em
+                background: #1f1f1f
+                color: white
+                bottom: 0
+                z-index: 10
                 .game-appid
                     font-size: 0.5em
-                    color: #8d8d8d
+                    color: #a7a7a7
 
             .game-image
+                position: absolute
+                top: 0
                 display: flex
                 width: 100%
-                height: 85%
-                min-height: 85%
+                height: 100%
                 justify-content: center
                 align-items: center
                 overflow: hidden
@@ -98,6 +107,7 @@ $gap-size: 10px
                 img
                     height: 100%
                     width: auto
+                    transition: all 0.2s linear
 
 #results-container.active
     height: 100%
