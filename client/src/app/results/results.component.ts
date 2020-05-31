@@ -35,6 +35,7 @@ export class ResultsComponent implements OnInit {
         if (f.length >= 0) {
             this.games$ = this.gameService.games.pipe(
                 tap(_ => this.loading = true),
+                take(1),
                 map( res => res
                     .filter( e => new RegExp(`(\\s|^)${f.toLowerCase()}`, 'g').test(e.name.toLowerCase()))
                     .sort( (a,b) => a.name.length - b.name.length )

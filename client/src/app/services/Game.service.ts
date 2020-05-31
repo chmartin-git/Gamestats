@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { shareReplay, map, switchMap, filter } from 'rxjs/operators'
+import { shareReplay, map, switchMap, filter, tap } from 'rxjs/operators'
 import { timer } from 'rxjs'
 import { Game, GameResponse } from '../../types/Game'
 
@@ -35,6 +35,6 @@ export class GameService {
     }
 
     private requestGames(){
-        return this.http.get<GameResponse>(API_ENDPOINT, requestHeader).pipe(map(response => response.applist.apps));
+        return this.http.get<GameResponse>(API_ENDPOINT, requestHeader).pipe(map(response => response.applist.apps), tap(_ => console.log("request")));
     }
 }
