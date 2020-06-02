@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
-import { Game, GameResponse } from './models/Games';
-import { getAllGames } from './controllers/Games';
+import { Game, GameResponse } from './Models/Games';
+import { getAllGames } from './Controllers/Games';
 import cors from 'cors';
 
 const app = express();

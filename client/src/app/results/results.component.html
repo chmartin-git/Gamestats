@@ -3,10 +3,10 @@
 </div>
 
 <div id="results-container" [class.active]='!loading'>
+    div.option
     <div *ngFor='let game of games$ | async' 
         class="game-container"
         (click)='gameClickHandler(game)'>
-
         <div class="game-inner-container" title="{{game.name}}">
             <div class="game-image">
                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{game.appid}}/header.jpg" alt="{{game.name}} image" onError="this.onerror=null;this.src='assets/images/chain.png';this.className='broken'">

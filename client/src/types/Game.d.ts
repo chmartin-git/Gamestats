@@ -8,3 +8,9 @@ export interface GameResponse {
         apps: Array<Game>
     };
 }
+
+export interface GameInfo {
+    game: Game;
+    players: number;
+    popularity: number;
+}

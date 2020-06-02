@@ -37,4 +37,8 @@ export class GameService {
     private requestGames(){
         return this.http.get<GameResponse>(API_ENDPOINT, requestHeader).pipe(map(response => response.applist.apps), tap(_ => console.log("request")));
     }
+
+    private gameInfo(id: number){
+        return this.http.get<>
+    }
 }
