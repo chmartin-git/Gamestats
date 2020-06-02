@@ -3,7 +3,6 @@
 </div>
 
 <div id="results-container" [class.active]='!loading'>
-    div.option
     <div *ngFor='let game of games$ | async' 
         class="game-container"
         (click)='gameClickHandler(game)'>
