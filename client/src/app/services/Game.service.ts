@@ -39,6 +39,6 @@ export class GameService {
     }
 
     private gameInfo(id: number){
-        return this.http.get<>
+        //return this.http.get<any>()
     }
 }
