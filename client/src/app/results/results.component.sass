@@ -7,7 +7,7 @@
     height: 0
 
 ::-webkit-scrollbar-thumb
-    background: #e1e1e1
+    background: #1ec60f
     border: 0 none #ffffff
     border-radius: 50px
 
@@ -18,7 +18,7 @@
         background: #000000
 
 ::-webkit-scrollbar-track
-    background: #666666
+    background: transparent
     border: 0 none #ffffff
     border-radius: 50px
 
@@ -55,34 +55,30 @@ $cols: 3
     app-options
         width: 50px
         height: 100%
-        background-color: #43c12a
+
 
     #game-list
         display: grid
-        align-items: center
-        grid-template-columns: repeat(#{$cols}, calc(100% / #{$cols} - #{$gap-size + $gap-size/$cols}))
-        grid-auto-rows: 22%
         width: 100%
-        height: 100%
+        height: calc(100% - #{2*$gap-size})
         row-gap: $gap-size
         column-gap: $gap-size
-        overflow: auto
-        background-color: #252525
+        overflow-x: hidden
+        overflow-y: auto
+        background-color: #313131
         transition: height 0.2s linear
         padding-left: $gap-size
         padding-top: $gap-size
-
+        padding-bottom: $gap-size
         .game-container
             display: flex
             justify-content: center
             align-items: center
             width: 100%
             height: 100%
-            grid-area: span 1 / span 1
-            background-color: #3a3a3a
-
 
             .game-inner-container
+                display: flex
                 width: 100%
                 height: 100%
                 flex-direction: column
@@ -92,9 +88,6 @@ $cols: 3
                 position: relative
 
                 &:hover
-                    width: 100%
-                    height: 100%
-
                     .game-image
                         img
                             transform: scale(1.05)
@@ -106,9 +99,8 @@ $cols: 3
                     height: 20%
                     justify-content: center
                     align-items: center
-                    color: #c7c7c725
                     font-size: 1.4em
-                    background: #1f1f1f
+                    background-color: #1d1d1d
                     color: white
                     bottom: 0
                     z-index: 10
@@ -133,6 +125,30 @@ $cols: 3
                         width: auto
                         transition: all 0.2s linear
 
+
+        &.compact
+            grid-auto-rows: 22%
+            grid-template-columns: repeat(#{$cols}, calc(100% / #{$cols} - #{$gap-size}))
+            .game-container
+                grid-area: span 1 / span 1
+
+        &.list
+            grid-template-columns: calc(100% - #{$gap-size})
+            grid-auto-rows: 8%
+            .game-container
+                .game-inner-container
+                    display: flex
+                    flex-direction: row
+                    .game-name
+                        justify-content: start
+                        right: 0
+                        width: 83%
+                        height: 100%
+                    .game-image
+                        left: 0
+                        width: 17%
+                        height: 100%
+                        justify-content: start
 #results-container.active
     height: 100%
 

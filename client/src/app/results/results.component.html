@@ -4,7 +4,10 @@
 
 <div id="results-container" [class.active]='!loading'>
     <app-options></app-options>
-    <div id="game-list">
+    <div id="game-list"
+         [class.compact]="mode === ModeEnum.compact"
+         [class.list]="mode === ModeEnum.list"
+    >
         <div *ngFor='let game of games$ | async'
              class="game-container"
              (click)='gameClickHandler(game)'>
@@ -16,9 +19,10 @@
                          (error)="imageErrorHandler($event)">
                 </div>
                 <div class="game-name">
-                    {{ game.name.length <= 20 ? game.name : game.name.slice(0, 20) + "..." }} <span class='game-appid'>&nbsp;#{{ game.appid }}</span>
+                    {{ game.name.length <= limit ? game.name : game.name.slice(0, limit) + "..." }} <span class='game-appid'>&nbsp;#{{ game.appid }}</span>
                 </div>
             </div>
+
 
         </div>
     </div>

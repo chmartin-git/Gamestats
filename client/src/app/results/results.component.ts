@@ -4,6 +4,7 @@ import { Game } from 'src/types/Game';
 import { Observable, from, merge, concat } from 'rxjs';
 import { GameService } from '../services/Game.service';
 import { map, take, tap, concatMap, mergeMap, defaultIfEmpty } from 'rxjs/operators';
+import {Mode} from '../services/Search.enum';
 
 const MAX_RESULT = 50;
 
@@ -17,7 +18,23 @@ export class ResultsComponent implements OnInit {
 
     games$: Observable<Array<Game>>;
     loading = true;
+    mode: Mode;
+    limit: number;
+
     constructor(private searchService: SearchService, private gameService: GameService) {
+        this.limit = 20;
+        this.mode = this.searchService.getMode;
+        this.searchService.mode$.subscribe({
+            next: nm => {
+                this.mode = nm;
+                if (this.mode === Mode.compact) {
+                    this.limit = 20;
+                }
+                else {
+                    this.limit = 70; // upper limit
+                }
+            }
+        });
         this.games$ = from([]);
     }
 
@@ -51,4 +68,5 @@ export class ResultsComponent implements OnInit {
         }
     }
 
+    get ModeEnum() { return Mode; }
 }
