@@ -1,32 +1,43 @@
-::-webkit-scrollbar 
-    width: 2px 
-    height: 2px 
-::-webkit-scrollbar-button 
-    width: 0px 
-    height: 0px 
-::-webkit-scrollbar-thumb 
-    background: #e1e1e1 
-    border: 0px none #ffffff 
-    border-radius: 50px 
-    &:hover 
-        background: #ffffff 
-    &:active 
-        background: #000000 
-::-webkit-scrollbar-track 
-    background: #666666 
-    border: 0px none #ffffff 
-    border-radius: 50px 
-    &:hover 
-        background: #666666 
-    &:active 
-        background: #333333 
-::-webkit-scrollbar-corner 
-    background: transparent 
+::-webkit-scrollbar
+    width: 2px
+    height: 2px
+
+::-webkit-scrollbar-button
+    width: 0
+    height: 0
+
+::-webkit-scrollbar-thumb
+    background: #e1e1e1
+    border: 0 none #ffffff
+    border-radius: 50px
+
+    &:hover
+        background: #ffffff
+
+    &:active
+        background: #000000
+
+::-webkit-scrollbar-track
+    background: #666666
+    border: 0 none #ffffff
+    border-radius: 50px
+
+    &:hover
+        background: #666666
+
+    &:active
+        background: #333333
+
+::-webkit-scrollbar-corner
+    background: transparent
+
+$gap-size: 20px
+$cols: 3
 
 #results-loading
     display: flex
     width: 100%
-    height: 0%
+    height: 0
     justify-content: center
     align-items: center
     transition: height 0.2s linear
@@ -36,81 +47,92 @@
 #results-loading.active
     height: 100%
 
-$gap-size: 20px
-$cols: 3
-#results-container
-    display: grid
-    align-items: center
-    grid-template-columns: repeat(#{$cols}, calc( 100% / #{$cols} - #{$gap-size + $gap-size/$cols}))
-    grid-auto-rows: 22%
-    width: 100%
-    height: 0%
-    row-gap: $gap-size
-    column-gap: $gap-size
-    overflow: auto
-    background-color: #252525
-    transition: height 0.2s linear
-    padding: $gap-size
 
-    .game-container
-        display: flex
-        justify-content: center
+#results-container
+    display: flex
+    height: 0
+
+    app-options
+        width: 50px
+        height: 100%
+        background-color: #43c12a
+
+    #game-list
+        display: grid
         align-items: center
+        grid-template-columns: repeat(#{$cols}, calc(100% / #{$cols} - #{$gap-size + $gap-size/$cols}))
+        grid-auto-rows: 22%
         width: 100%
         height: 100%
-        grid-area: span 1 / span 1
-        background-color: #3a3a3a
+        row-gap: $gap-size
+        column-gap: $gap-size
+        overflow: auto
+        background-color: #252525
+        transition: height 0.2s linear
+        padding-left: $gap-size
+        padding-top: $gap-size
 
-
-        .game-inner-container    
+        .game-container
+            display: flex
+            justify-content: center
+            align-items: center
             width: 100%
             height: 100%
-            flex-direction: column
-            user-select: none
-            transition: all 0.2s linear
-            cursor: pointer
-            position: relative
-            &:hover
+            grid-area: span 1 / span 1
+            background-color: #3a3a3a
+
+
+            .game-inner-container
                 width: 100%
                 height: 100%
-                .game-image
-                    img
-                        transform: scale(1.05)
+                flex-direction: column
+                user-select: none
+                transition: all 0.2s linear
+                cursor: pointer
+                position: relative
 
-            .game-name
-                position: absolute
-                display: flex
-                width: 100%
-                height: 20%
-                justify-content: center
-                align-items: center
-                color: #c7c7c725
-                font-size: 1.4em
-                background: #1f1f1f
-                color: white
-                bottom: 0
-                z-index: 10
-                .game-appid
-                    font-size: 0.5em
-                    color: #a7a7a7
-
-            .game-image
-                position: absolute
-                top: 0
-                display: flex
-                width: 100%
-                height: 100%
-                justify-content: center
-                align-items: center
-                overflow: hidden
-                background-color: #1d1d1d
-                img
+                &:hover
+                    width: 100%
                     height: 100%
-                    width: auto
-                    transition: all 0.2s linear
+
+                    .game-image
+                        img
+                            transform: scale(1.05)
+
+                .game-name
+                    position: absolute
+                    display: flex
+                    width: 100%
+                    height: 20%
+                    justify-content: center
+                    align-items: center
+                    color: #c7c7c725
+                    font-size: 1.4em
+                    background: #1f1f1f
+                    color: white
+                    bottom: 0
+                    z-index: 10
+
+                    .game-appid
+                        font-size: 0.5em
+                        color: #a7a7a7
+
+                .game-image
+                    position: absolute
+                    top: 0
+                    display: flex
+                    width: 100%
+                    height: 100%
+                    justify-content: center
+                    align-items: center
+                    overflow: hidden
+                    background-color: #1d1d1d
+
+                    img
+                        height: 100%
+                        width: auto
+                        transition: all 0.2s linear
 
 #results-container.active
     height: 100%
-
-
 

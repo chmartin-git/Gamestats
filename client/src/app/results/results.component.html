@@ -3,17 +3,23 @@
 </div>
 
 <div id="results-container" [class.active]='!loading'>
-    <div *ngFor='let game of games$ | async' 
-        class="game-container"
-        (click)='gameClickHandler(game)'>
-        <div class="game-inner-container" title="{{game.name}}">
-            <div class="game-image">
-                <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{game.appid}}/header.jpg" alt="{{game.name}} image" onError="this.onerror=null;this.src='assets/images/chain.png';this.className='broken'">
-            </div>
-            <div class="game-name">
-                {{ game.name.length <= 20 ? game.name : game.name.slice(0,20) + "..." }} <span class='game-appid'>&nbsp;#{{ game.appid }}</span>
-            </div>
-        </div>
+    <app-options></app-options>
+    <div id="game-list">
+        <div *ngFor='let game of games$ | async'
+             class="game-container"
+             (click)='gameClickHandler(game)'>
 
+            <div class="game-inner-container" title="{{game.name}}">
+                <div class="game-image">
+                    <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{game.appid}}/header.jpg"
+                         alt="{{game.name}} image"
+                         (error)="imageErrorHandler($event)">
+                </div>
+                <div class="game-name">
+                    {{ game.name.length <= 20 ? game.name : game.name.slice(0, 20) + "..." }} <span class='game-appid'>&nbsp;#{{ game.appid }}</span>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

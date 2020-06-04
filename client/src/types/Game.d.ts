@@ -1,16 +1,22 @@
 export interface Game {
-    appid: number;
-    name: string;
+  appid: number;
+  name: string;
 }
 
 export interface GameResponse {
-    applist: {
-        apps: Array<Game>
-    };
+  applist: {
+    apps: Array<Game>
+  };
 }
 
 export interface GameInfo {
-    game: Game;
-    players: number;
-    popularity: number;
+  name: string;
+  appid: number;
+  players: number;
+  prices: {
+    store: string;
+    price: number;
+    date: string;
+  }[];
+  resume: string;
 }

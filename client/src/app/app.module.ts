@@ -11,13 +11,15 @@ import { ResultsComponent } from './results/results.component';
 import { SearchService } from './services/Search.service';
 import { GameService } from './services/Game.service';
 import { HttpClientModule } from '@angular/common/http';
+import { OptionsComponent } from './results/options/options.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         SearchComponent,
-        ResultsComponent
+        ResultsComponent,
+        OptionsComponent
     ],
     imports: [
         BrowserModule,

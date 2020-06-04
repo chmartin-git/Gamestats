@@ -16,7 +16,7 @@ const MAX_RESULT = 50;
 export class ResultsComponent implements OnInit {
 
     games$: Observable<Array<Game>>;
-    loading: boolean = true;
+    loading = true;
     constructor(private searchService: SearchService, private gameService: GameService) {
         this.games$ = from([]);
     }
@@ -25,6 +25,11 @@ export class ResultsComponent implements OnInit {
         this.searchService.search$.subscribe({
             next: v => this.gamesFiltered(v)
         });
+    }
+
+    imageErrorHandler(event){
+        event.target.src = 'assets/images/chain.png';
+        event.target.className = 'broken';
     }
 
     gameClickHandler({appid, name}){
@@ -38,7 +43,7 @@ export class ResultsComponent implements OnInit {
                 take(1),
                 map( res => res
                     .filter( e => new RegExp(`(\\s|^)${f.toLowerCase()}`, 'g').test(e.name.toLowerCase()))
-                    .sort( (a,b) => a.name.length - b.name.length )
+                    .sort( (a, b) => a.name.length - b.name.length )
                     .slice(0, MAX_RESULT)
                     ),
                 tap(_ => this.loading = false)

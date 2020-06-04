@@ -4,8 +4,12 @@ import { Observable } from 'rxjs';
 import { shareReplay, map, switchMap, filter, tap } from 'rxjs/operators'
 import { timer } from 'rxjs'
 import { Game, GameResponse } from '../../types/Game'
-const HOST = "15.236.145.84";
+
+
+const HOST = "ec2-15-236-145-84.eu-west-3.compute.amazonaws.com";
 const API_ENDPOINT = `http://${HOST}:8080/api/games`;
+
+
 const CACHE_SIZE = 1;
 const INTERVAL = 120 //seconds
 

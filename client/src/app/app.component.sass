@@ -1,26 +1,28 @@
 app-home
-	height: 100%
-	width: 30%
-	display: flex
-	justify-content: center
-	align-items: center
-	transition: width 0.3s linear
+    height: 100%
+    width: 30%
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: width 0.3s linear
+    opacity: 0.4
 
 
 app-home.active
-	width: 100%
+    width: 100%
+    opacity: 1
 
 
 app-results
-	display: flex
-	height: 100%
-	width: 0%
-	overflow: hidden
-	transition: width 0.3s linear
-	overflow: hidden
-	flex-direction: column
-
+    display: flex
+    height: 100%
+    width: 0%
+    overflow: hidden
+    transition: width 0.3s linear
+    flex-direction: column
 
 app-results.active
-	width: 70%
+    -webkit-box-shadow: -1px 1px 15px 2px #1c1c1c
+    box-shadow: -1px 1px 15px 2px #1c1c1c
+    width: 70%
 

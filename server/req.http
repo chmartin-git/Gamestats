@@ -1,3 +1,8 @@
+GET https://api.rawg.io/api/games?search=tera
+Accept: application/json
+Content-Type: application/json
+
+###
 GET http://localhost:8080/api/games
 
 ###
@@ -5,3 +10,4 @@ POST http://localhost:8080/api/games
 
 ###
 GET https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?format=json&appid=389300
+
