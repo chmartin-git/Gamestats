@@ -21,6 +21,7 @@ export class SearchService {
     get isActivated(){
         return this.activated;
     }
+
     get getMode(){
         return this.mode;
     }

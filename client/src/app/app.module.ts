@@ -12,6 +12,9 @@ import { SearchService } from './services/Search.service';
 import { GameService } from './services/Game.service';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionsComponent } from './results/options/options.component';
+import { ClientComponent } from './client/client.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +22,10 @@ import { OptionsComponent } from './results/options/options.component';
         HomeComponent,
         SearchComponent,
         ResultsComponent,
-        OptionsComponent
+        OptionsComponent,
+        ClientComponent,
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,

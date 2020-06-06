@@ -14,9 +14,11 @@ export class SearchComponent implements OnInit {
     constructor(private searchService: SearchService) {
         this.activated = searchService.isActivated;
         this.search = this.searchService.searchContent;
+
         this.searchService.search$.subscribe({
             next: v => this.search = v
         });
+
         this.searchService.activated$.subscribe({
             next: v => this.activated = v
         });

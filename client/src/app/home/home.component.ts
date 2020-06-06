@@ -7,8 +7,9 @@ import { SearchService } from '../services/Search.service';
     styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-    title = "Gamin' Stats";
+    title = 'Gamin\' Stats';
     activated: boolean;
+
     constructor(private searchService: SearchService) {
         this.searchService.activated$.subscribe({
             next: v => this.activated = v

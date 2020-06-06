@@ -36,6 +36,7 @@ export class GameService {
                 shareReplay(CACHE_SIZE)
             );
         }
+
         return this.cache$;
     }
 
