@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import { Game, GameResponse } from './Models/Games';
-import { getAllGames } from './Controllers/Games';
+import {getAllGames, getGameInfo} from './Controllers/Games';
 import cors from 'cors';
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(morgan("combined"));
 
 app.get('/api/games', getAllGames);
 
-//app.get('/api/game/:id', )
+app.get('/api/game/:appid', getGameInfo);
 
 app.use('/', (req, res, next) => {
     res.status(404).send("Page not found sorry :(");

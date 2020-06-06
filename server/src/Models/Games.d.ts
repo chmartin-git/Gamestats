@@ -13,10 +13,10 @@ export interface GameInfo {
     name: string;
     appid: number;
     players: number;
-    prices: {
-        store: string;
-        price: number;
-        date: string;
-    }[];
+    images: {
+        background: string;
+        illustrations: string[];
+    };
     resume: string;
+    rating: number;
 }

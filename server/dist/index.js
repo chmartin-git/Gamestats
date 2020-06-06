@@ -11,7 +11,7 @@ const app = express_1.default();
 app.use(cors_1.default());
 app.use(morgan_1.default("combined"));
 app.get('/api/games', Games_1.getAllGames);
-//app.get('/api/game/:id', )
+app.get('/api/game/:appid', Games_1.getGameInfo);
 app.use('/', (req, res, next) => {
     res.status(404).send("Page not found sorry :(");
 });
