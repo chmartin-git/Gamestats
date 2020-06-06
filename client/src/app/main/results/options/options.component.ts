@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Mode} from '../../services/Search.enum';
-import {SearchService} from '../../services/Search.service';
+import {Mode} from '../../../services/Search.enum';
+import {SearchService} from '../../../services/Search.service';
 @Component({
     selector: 'app-options',
     templateUrl: './options.component.html',

@@ -3,21 +3,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {shareReplay, map, switchMap, filter, tap} from 'rxjs/operators';
 import {timer} from 'rxjs';
-import {Game, GameResponse} from '../../types/Game';
+import {Game, GameInfo, GameResponse} from '../../types/Game';
 
 
-const HOST = 'ec2-15-236-145-84.eu-west-3.compute.amazonaws.com';
-const API_ENDPOINT = `http://${HOST}:8080/api/games`;
+const HOST = 'localhost';
+const API_ENDPOINT = `http://${HOST}:8080/api`;
 
 
 const CACHE_SIZE = 1;
 const INTERVAL = 120; // seconds
-
-const requestHeader = {
-    headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*'
-    })
-};
 
 @Injectable()
 export class GameService {
@@ -29,22 +23,20 @@ export class GameService {
 
     get games() {
         const timer$ = timer(0, INTERVAL * 1000);
-
         if (!this.cache$) {
             this.cache$ = timer$.pipe(
                 switchMap(_ => this.requestGames()),
                 shareReplay(CACHE_SIZE)
             );
         }
-
         return this.cache$;
     }
 
     private requestGames() {
-        return this.http.get<GameResponse>(API_ENDPOINT, requestHeader).pipe(map(response => response.applist.apps), tap(_ => console.log("request")));
+        return this.http.get<GameResponse>(`${API_ENDPOINT}/games`).pipe(map(response => response.applist.apps));
     }
 
-    private gameInfo(id: number) {
-        //return this.http.get<any>()
+    private requestGameInfo(id: number) {
+        return this.http.get<GameInfo>(`${API_ENDPOINT}/game/${id}`);
     }
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../services/Search.service';
+import { SearchService } from '../../services/Search.service';
 import { Game } from 'src/types/Game';
-import { Observable, from, merge, concat } from 'rxjs';
-import { GameService } from '../services/Game.service';
-import { map, take, tap, concatMap, mergeMap, defaultIfEmpty } from 'rxjs/operators';
-import {Mode} from '../services/Search.enum';
+import { Observable, from } from 'rxjs';
+import { GameService } from '../../services/Game.service';
+import { map, take, tap } from 'rxjs/operators';
+import {Mode} from '../../services/Search.enum';
 
 const MAX_RESULT = 50;
 
@@ -57,15 +57,19 @@ export class ResultsComponent implements OnInit {
         if (f.length >= 0) {
             this.games$ = this.gameService.games.pipe(
                 tap(_ => this.loading = true),
-                take(1),
                 map( res => res
                     .filter( e => new RegExp(`(\\s|^)${f.toLowerCase()}`, 'g').test(e.name.toLowerCase()))
                     .sort( (a, b) => a.name.length - b.name.length )
                     .slice(0, MAX_RESULT)
                     ),
+                take(1),
                 tap(_ => this.loading = false)
             );
         }
+    }
+
+    searchGame(appid: number){
+
     }
 
     get ModeEnum() { return Mode; }
